@@ -1,0 +1,5 @@
+#Ignore
+.xmonad/*
+
+#Allow
+!.xmonad/xmonad.hs

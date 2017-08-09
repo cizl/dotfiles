@@ -289,7 +289,7 @@ main = do -- xmonad defaults
         
 --        layoutHook         = myLayout,
 --        manageHook         = myManageHook,
---        handleEventHook    = myEventHook,
+--        handleEventHook    = fullscreenEventHook,
 --        logHook            = myLogHook,
 --        startupHook        = myStartupHook
     } `additionalKeys`
@@ -299,6 +299,7 @@ main = do -- xmonad defaults
 		, ((0, xF86XK_AudioMute			), spawn "amixer -D pulse set Master toggle")
 		, ((0, xK_KP_Add), spawn "amixer -D pulse set Master 5%+")
 		, ((0, xK_KP_Subtract), spawn "amixer -D pulse set Master 5%-")
+		, ((0, xK_KP_Multiply), spawn "nmcli connection up ISKONOVAC_8FCE24")
 
 		]
 
