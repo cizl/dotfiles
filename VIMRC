@@ -1,0 +1,98 @@
+call plug#begin('~/.vim/plugged')
+
+" comment with gcc
+Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
+Plug 'flazz/vim-colorschemes'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Chiel92/vim-autoformat'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/limelight.vim'
+Plug 'will133/vim-dirdiff'
+Plug 'davidhalter/jedi-vim'
+
+
+call plug#end()
+syntax on
+set laststatus=2
+set pastetoggle=<F2>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" let g:airline_powerline_fonts = 1
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+colorscheme ChocolateLiquor
+
+" ycm config
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 1
+
+" spaces instead of tabs
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+filetype indent on
+retab
+
+" autoformat on save
+au BufWrite * :Autoformat
+
+" enable mouse integartion scroll..
+set mouse=a
+set cursorline
+
+" enable fold close for cpp
+set foldmethod=syntax
+" nmap fc :foldclose<CR>, have zc
+" nmap fo :foldopen<CR>, have zo
+
+" python format
+let g:formatter_yapf_style = 'chromium'
+let g:formatdef_yapf = "'yapf --style=\"{based_on_style:'.g:formatter_yapf_style.'}\" -l '.a:firstline.'-'.a:lastline"
+
+nmap <Space>n :NERDTreeFocus<CR>
+nmap <Space>l :tabnext<CR>
+nmap gi :YcmCompleter GoToInclude<CR>
+
+" delete return line
+set backspace=2
+set backspace=indent,eol,start
+
+
+" Limelight
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
